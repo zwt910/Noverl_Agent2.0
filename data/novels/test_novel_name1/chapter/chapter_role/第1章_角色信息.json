@@ -1,0 +1,62 @@
+{
+  "chapter_title": "第1章",
+  "chapter_file": "第1章.txt",
+  "roles": [
+    {
+      "name": "江哲",
+      "gender": "男",
+      "location": "江城一中十二班教室",
+      "events": "从梦中醒来发现自己穿越回高中时代，激活了积分兑换系统，公开宣称要在期末考试中取得班级和年级第一。",
+      "final_status": "充满自信和狂喜，准备利用系统改变自己的高中生活。"
+    },
+    {
+      "name": "林薇",
+      "gender": "女",
+      "location": "江城一中十二班教室",
+      "events": "抢过苏晓的笔记本并发现她使用了某个人的笔记，暗示两人之间有某种关系。",
+      "final_status": null
+    },
+    {
+      "name": "苏晓",
+      "gender": "女",
+      "location": "江城一中十二班教室",
+      "events": "被林薇抢走笔记本并暗示与某人有关，显得慌张。",
+      "final_status": null
+    },
+    {
+      "name": "陈默",
+      "gender": "男",
+      "location": "江城一中十二班教室",
+      "events": "在讨论物理问题时被林清泉嘲讽，对江哲的突然宣言表示疑惑。",
+      "final_status": null
+    },
+    {
+      "name": "林清泉",
+      "gender": "男",
+      "location": "江城一中十二班教室",
+      "events": "嘲讽陈默不懂相对论，后来嘲笑江哲的宣言。",
+      "final_status": null
+    },
+    {
+      "name": "柳依依",
+      "gender": "女",
+      "location": "江城一中十二班教室",
+      "events": "注意到江哲的异样表情并嫌弃地询问，后来对江哲的宣言表示不屑。",
+      "final_status": null
+    },
+    {
+      "name": "郝伊轩",
+      "gender": "男",
+      "location": "江城一中十二班教室",
+      "events": "被班主任点名批评物理成绩最低，江哲为他出头。",
+      "final_status": null
+    },
+    {
+      "name": "铁面张",
+      "gender": "男",
+      "location": "江城一中十二班教室",
+      "events": "作为班主任批评郝伊轩和江哲的成绩，对江哲的宣言表示愤怒和怀疑。",
+      "final_status": null
+    }
+  ]
+}

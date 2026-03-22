@@ -1,0 +1,145 @@
+{
+  "fields": {
+    "basic_info": {
+      "name": {
+        "type": "string",
+        "required": true,
+        "description": "角色姓名"
+      },
+      "gender": {
+        "type": "string",
+        "required": true,
+        "description": "性别"
+      },
+      "age": {
+        "type": "integer",
+        "required": false,
+        "description": "年龄"
+      },
+      "appearance": {
+        "type": "string",
+        "required": false,
+        "description": "外貌特征"
+      }
+    },
+    "background": {
+      "origin": {
+        "type": "string",
+        "required": false,
+        "description": "出身背景"
+      },
+      "occupation": {
+        "type": "string",
+        "required": false,
+        "description": "职业"
+      },
+      "special_ability": {
+        "type": "string",
+        "required": false,
+        "description": "特殊能力"
+      },
+      "past_events": {
+        "type": "string",
+        "required": false,
+        "description": "过往经历"
+      }
+    },
+    "personality": {
+      "traits": {
+        "type": "array",
+        "required": false,
+        "description": "性格特质"
+      },
+      "motivation": {
+        "type": "string",
+        "required": false,
+        "description": "行动动机"
+      },
+      "values": {
+        "type": "string",
+        "required": false,
+        "description": "价值观"
+      },
+      "fears": {
+        "type": "string",
+        "required": false,
+        "description": "恐惧事物"
+      }
+    },
+    "relationships": {
+      "family": {
+        "type": "object",
+        "required": false,
+        "description": "家庭关系"
+      },
+      "friends": {
+        "type": "array",
+        "required": false,
+        "description": "朋友关系"
+      },
+      "enemies": {
+        "type": "array",
+        "required": false,
+        "description": "敌对关系"
+      },
+      "love_interests": {
+        "type": "array",
+        "required": false,
+        "description": "感情关系"
+      }
+    },
+    "current_state": {
+      "status": {
+        "type": "string",
+        "required": false,
+        "description": "当前状态"
+      },
+      "location": {
+        "type": "string",
+        "required": false,
+        "description": "当前位置"
+      },
+      "emotional_state": {
+        "type": "string",
+        "required": false,
+        "description": "情感状态"
+      },
+      "goals": {
+        "type": "string",
+        "required": false,
+        "description": "当前目标"
+      }
+    },
+    "development": {
+      "character_arc": {
+        "type": "string",
+        "required": false,
+        "description": "角色成长弧线"
+      },
+      "transformation_points": {
+        "type": "array",
+        "required": false,
+        "description": "转变关键点"
+      },
+      "skill_progression": {
+        "type": "object",
+        "required": false,
+        "description": "技能发展"
+      }
+    }
+  },
+  "metadata": {
+    "created_time": {
+      "type": "datetime",
+      "description": "创建时间"
+    },
+    "last_modified": {
+      "type": "datetime",
+      "description": "最后修改时间"
+    },
+    "version": {
+      "type": "string",
+      "description": "数据版本"
+    }
+  }
+}

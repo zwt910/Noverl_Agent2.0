@@ -1,0 +1,162 @@
+{
+  "江哲": {
+    "basic_info": {
+      "name": "江哲",
+      "gender": "男"
+    },
+    "background": {
+      "origin": "江城一中十二班学生",
+      "past_events": "曾经是柳依依的舔狗，但最终一无所有"
+    },
+    "personality": {
+      "traits": [
+        "自信",
+        "智慧"
+      ],
+      "motivation": "利用系统改变自己的重生学习命运，摆脱高中学习的压力，享受精彩人生"
+    },
+    "relationships": {
+      "friends": [
+        "郝伊轩"
+      ],
+      "enemies": [
+        "林清泉"
+      ],
+      "love_interests": [
+        "柳依依"
+      ]
+    },
+    "current_state": {
+      "status": "穿越回高中时代，激活了积分兑换系统",
+      "location": "江城一中十二班教室",
+      "emotional_state": "狂喜和优越感",
+      "goals": "在期末考试中取得班级第一和年级第一"
+    },
+    "development": {},
+    "metadata": {
+      "created_time": "2026-02-28T08:49:31.044044",
+      "last_modified": "2026-02-28T08:49:31.044044",
+      "version": "1.0"
+    }
+  },
+  "陈默": {
+    "basic_info": {
+      "name": "陈默",
+      "gender": "男",
+      "appearance": "清瘦的背影，戴眼镜"
+    },
+    "background": {
+      "occupation": "学生",
+      "special_ability": "学术能力较强，班级成绩最好的学生"
+    },
+    "personality": {
+      "traits": [
+        "冷静",
+        "理性"
+      ]
+    },
+    "relationships": {},
+    "current_state": {},
+    "development": {},
+    "metadata": {
+      "created_time": "2026-02-28T08:49:31.044948",
+      "last_modified": "2026-02-28T08:49:31.044948",
+      "version": "1.0"
+    }
+  },
+  "林清泉": {
+    "basic_info": {
+      "name": "林清泉",
+      "gender": "男"
+    },
+    "personality": {
+      "traits": [
+        "嘲讽",
+        "挑衅"
+      ]
+    },
+    "relationships": {
+      "enemies": [
+        "江哲"
+      ]
+    },
+    "background": {},
+    "current_state": {},
+    "development": {},
+    "metadata": {
+      "created_time": "2026-02-28T08:49:31.045464",
+      "last_modified": "2026-02-28T08:49:31.045464",
+      "version": "1.0"
+    }
+  },
+  "柳依依": {
+    "basic_info": {
+      "name": "柳依依",
+      "gender": "女",
+      "appearance": "稍有姿色"
+    },
+    "relationships": {
+      "love_interests": [
+        "江哲"
+      ]
+    },
+    "background": {},
+    "personality": {},
+    "current_state": {},
+    "development": {},
+    "metadata": {
+      "created_time": "2026-02-28T08:49:31.045841",
+      "last_modified": "2026-02-28T08:49:31.045841",
+      "version": "1.0"
+    }
+  },
+  "郝伊轩": {
+    "basic_info": {
+      "name": "郝伊轩",
+      "gender": "男"
+    },
+    "background": {
+      "occupation": "学生"
+    },
+    "personality": {
+      "traits": [
+        "有些懦弱，但正在变得自信"
+      ]
+    },
+    "relationships": {
+      "friends": [
+        "江哲"
+      ]
+    },
+    "current_state": {},
+    "development": {},
+    "metadata": {
+      "created_time": "2026-02-28T08:49:31.046234",
+      "last_modified": "2026-02-28T08:49:31.046234",
+      "version": "1.0"
+    }
+  },
+  "铁面张": {
+    "basic_info": {
+      "name": "铁面张",
+      "gender": "男"
+    },
+    "background": {
+      "occupation": "物理老师，江哲的班主任"
+    },
+    "personality": {
+      "traits": [
+        "严厉",
+        "权威"
+      ]
+    },
+    "relationships": {},
+    "current_state": {},
+    "development": {},
+    "metadata": {
+      "created_time": "2026-02-28T08:49:31.046637",
+      "last_modified": "2026-02-28T08:49:31.046637",
+      "version": "1.0"
+    }
+  }
+}
