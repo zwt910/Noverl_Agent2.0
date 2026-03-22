@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Noverl Agent · 小说创作多智能体</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <header class="top-bar" role="banner">
+        <div class="brand">
+          <span class="logo" aria-hidden="true">◆</span>
+          <div class="brand-text">
+            <h1>Noverl Agent</h1>
+            <p class="brand-tagline">小说创作多智能体</p>
+          </div>
+        </div>
+        <div class="meta session-bar" id="session-meta" hidden>
+          <span class="pill" id="novel-pill"></span>
+          <span class="pill pill-sub" id="agent-pill"></span>
+          <button type="button" class="btn ghost" id="btn-switch-novel">切换作品</button>
+        </div>
+      </header>
+
+      <main class="main app-main">
+        <aside class="nav-sidebar panel panel--nav" id="nav-sidebar" aria-label="作品资料导航">
+          <div class="nav-sidebar-inner">
+            <p class="nav-hint" id="nav-hint">请先选择作品以浏览本书文件</p>
+
+            <div class="nav-modules">
+              <div class="nav-module" data-module="chapters">
+                <div class="nav-module-row">
+                  <button type="button" class="nav-module-head" data-toggle="chapters" aria-expanded="false">
+                    <span class="nav-chevron" aria-hidden="true">▸</span>
+                    <span class="nav-module-label">章节</span>
+                  </button>
+                  <button type="button" class="nav-add-btn" data-add="chapters" title="新建章节文件" hidden>
+                    +
+                  </button>
+                </div>
+                <ul class="nav-sub" id="nav-chapters" hidden></ul>
+              </div>
+
+              <div class="nav-module" data-module="outlines">
+                <div class="nav-module-row">
+                  <button type="button" class="nav-module-head" data-toggle="outlines" aria-expanded="false">
+                    <span class="nav-chevron" aria-hidden="true">▸</span>
+                    <span class="nav-module-label">剧情大纲</span>
+                  </button>
+                  <button type="button" class="nav-add-btn" data-add="outlines" title="新建大纲文件" hidden>
+                    +
+                  </button>
+                </div>
+                <ul class="nav-sub" id="nav-outlines" hidden></ul>
+              </div>
+
+              <div class="nav-module" data-module="main-plots">
+                <div class="nav-module-row">
+                  <button type="button" class="nav-module-head" data-toggle="main-plots" aria-expanded="false">
+                    <span class="nav-chevron" aria-hidden="true">▸</span>
+                    <span class="nav-module-label">当前主线</span>
+                  </button>
+                  <button type="button" class="nav-add-btn" data-add="main-plots" title="新建主线文件" hidden>
+                    +
+                  </button>
+                </div>
+                <ul class="nav-sub" id="nav-main-plots" hidden></ul>
+              </div>
+
+              <div class="nav-module">
+                <button type="button" class="nav-module-head nav-module-head--leaf" data-page="intro">
+                  <span class="nav-chevron nav-chevron--spacer" aria-hidden="true">▸</span>
+                  <span class="nav-module-label">小说简介</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="nav-foot">
+              <button type="button" class="btn-link" id="btn-refresh-nav" title="重新扫描章节目录">刷新目录</button>
+            </div>
+          </div>
+        </aside>
+
+        <section class="preview-pane panel panel--preview" id="browse-pane" aria-label="预览与创作内容">
+          <div class="preview-scroll" id="preview-scroll">
+            <nav class="preview-tabs" id="preview-tabs" role="tablist" aria-label="预览分类">
+              <button type="button" class="preview-tab" role="tab" data-preview-tab="chapters" aria-selected="false">
+                章节
+              </button>
+              <button type="button" class="preview-tab" role="tab" data-preview-tab="outlines" aria-selected="false">
+                剧情大纲
+              </button>
+              <button type="button" class="preview-tab" role="tab" data-preview-tab="main" aria-selected="false">
+                当前主线
+              </button>
+              <button type="button" class="preview-tab" role="tab" data-preview-tab="intro" aria-selected="false">
+                小说简介
+              </button>
+              <button type="button" class="preview-tab" role="tab" data-preview-tab="chat" aria-selected="false">
+                对话创作
+              </button>
+            </nav>
+
+            <div id="preview-panel-file" class="preview-panel-file">
+              <div class="browse-toolbar">
+                <div class="browse-toolbar-top">
+                  <div class="browse-toolbar-text">
+                    <h2 class="browse-title" id="browse-title">内容浏览</h2>
+                    <span class="browse-meta" id="browse-meta"></span>
+                  </div>
+                  <button type="button" class="btn danger btn-sm" id="btn-preview-delete" hidden>删除</button>
+                </div>
+                <div class="browse-filename-row" id="browse-filename-row" hidden>
+                  <label class="browse-filename-label"
+                    >文件名（不含 .txt，修改后失焦保存并重命名）<input
+                      type="text"
+                      id="browse-filename-input"
+                      maxlength="200"
+                      autocomplete="off"
+                  /></label>
+                </div>
+              </div>
+              <div class="browse-body-wrap">
+                <textarea
+                  id="browse-editor"
+                  class="browse-editor"
+                  spellcheck="false"
+                  rows="16"
+                  placeholder="在左侧打开文件后开始编辑；内容会定时自动保存。"
+                ></textarea>
+              </div>
+            </div>
+
+            <div id="preview-panel-chat" class="preview-panel-chat" hidden>
+              <div id="staging-creative" class="staging-creative" hidden>
+                <div class="staging-head">
+                  <h3 class="staging-title">待确认创作 · <span id="staging-role-label"></span></h3>
+                  <p class="staging-meta" id="staging-meta"></p>
+                </div>
+                <textarea id="staging-editor" class="staging-editor" rows="18" spellcheck="false"></textarea>
+                <div class="staging-actions">
+                  <button type="button" class="btn primary" id="staging-save">保存到作品</button>
+                  <button type="button" class="btn secondary" id="staging-discard">删除（不保存）</button>
+                </div>
+                <p class="staging-hint">
+                  编剧 / 写手 / 编辑 生成后自动跳转至此。可直接修改正文；保存后写入对应磁盘文件；删除仅关闭预览，不写文件。
+                </p>
+              </div>
+              <p id="staging-empty" class="staging-empty">
+                暂无待确认创作。编剧、写手或编辑完成一次生成或修改后，将自动切换到此并显示全文供你预览。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chat-panel panel panel--chat">
+          <div class="chat-head">
+            <span class="chat-head-label">对话</span>
+          </div>
+          <details class="outline-wizard" id="outline-wizard">
+            <summary class="outline-wizard-summary">
+              <span class="outline-wizard-chevron" aria-hidden="true"></span>
+              <span class="outline-wizard-title">剧情大纲向导（填表发起创作）</span>
+            </summary>
+            <div class="outline-wizard-body">
+              <p class="wizard-hint">与对话中说明「第几章、用户要求、前文章数」等价；留空要求视为「无」。</p>
+              <div class="wizard-grid">
+                <label>
+                  章节号
+                  <input type="number" id="wizard-chapter" min="1" max="9999" value="1" required />
+                </label>
+                <label>
+                  读取前文章数
+                  <input type="number" id="wizard-prev" min="1" max="80" value="3" required />
+                </label>
+              </div>
+              <label class="wizard-full">
+                用户要求（可选）
+                <textarea id="wizard-req" rows="2" maxlength="50000" placeholder="无特别要求可留空"></textarea>
+              </label>
+              <button type="button" class="btn secondary" id="btn-outline-wizard">按向导发起大纲创作</button>
+            </div>
+          </details>
+          <div class="messages" id="messages" aria-live="polite"></div>
+          <form class="composer" id="composer">
+            <textarea
+              id="input"
+              rows="3"
+              placeholder="输入消息…（Enter 发送，Shift+Enter 换行）"
+              autocomplete="off"
+            ></textarea>
+            <div class="composer-actions">
+              <span class="status" id="status"></span>
+              <button type="submit" class="btn primary" id="btn-send">发送</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="novel-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal panel panel--modal">
+        <h2 id="modal-title">选择作品</h2>
+        <p class="modal-desc">连接本地 <code>data/novels</code> 中的作品后开始对话。</p>
+
+        <div class="form-group">
+          <label>已有作品</label>
+          <select id="novel-select">
+            <option value="">— 请选择 —</option>
+          </select>
+          <button type="button" class="btn secondary" id="btn-open-existing">进入选中作品</button>
+        </div>
+
+        <div class="divider" role="separator" aria-orientation="horizontal"><span>或</span></div>
+
+        <div class="form-group">
+          <label for="novel-new-name">新建作品名称</label>
+          <input type="text" id="novel-new-name" placeholder="例如：我的修仙传" maxlength="200" />
+          <button type="button" class="btn primary" id="btn-create-new">创建并进入</button>
+        </div>
+
+        <p class="error" id="modal-error" hidden></p>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="delete-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title" hidden>
+      <div class="modal panel panel--modal modal--narrow">
+        <h2 id="delete-modal-title">确认删除</h2>
+        <p class="modal-desc" id="delete-confirm-message"></p>
+        <div class="modal-actions">
+          <button type="button" class="btn secondary" id="btn-delete-cancel">取消</button>
+          <button type="button" class="btn danger" id="btn-delete-confirm">确认删除</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
